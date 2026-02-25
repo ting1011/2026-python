@@ -16,7 +16,7 @@ The first line contains integer N (1 ≤ N ≤ 100), the size of a set S.Element
 
 ## 輸出說明
 
-Output the total number of plausible sextuples.
+Output the total number of plausible sextuples.
 
 ---
 
