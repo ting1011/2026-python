@@ -8,7 +8,7 @@
 ## A. 本週目標（Week 02）
 
 1. 在 VS Code 完成教材同步
-2. 建立 `submit/week-02` 分支
+2. 建立 `submit/week-02-<student-id>` 分支
 3. 只在 `weeks/week-02/solutions/<student-id>/` 放作業
 4. 由 VS Code 或 GitHub 建立 PR
 
@@ -69,12 +69,12 @@ git push origin main
 
 - 點底部左下角分支名稱
 - `Create new branch...`
-- 輸入：`submit/week-02`
+- 輸入：`submit/week-02-<student-id>`
 
 方式二（Terminal）：
 
 ```bash
-git checkout -b submit/week-02
+git checkout -b submit/week-02-<student-id>
 ```
 
 ### Step 3：建立本週作業目錄
@@ -103,7 +103,7 @@ weeks/week-02/solutions/<student-id>/
 ```bash
 git add weeks/week-02/solutions/<student-id>/
 git commit -m "Submit week-02"
-git push -u origin submit/week-02
+git push -u origin submit/week-02-<student-id>
 ```
 
 ### Step 5：建立 PR
@@ -115,7 +115,7 @@ git push -u origin submit/week-02
 方式二（GitHub 網站）：
 
 - base：`main`
-- compare：`submit/week-02`
+- compare：`submit/week-02-<student-id>`
 
 PR 標題格式：
 
@@ -169,7 +169,7 @@ weeks/week-02/solutions/<student-id>/
 ## G. 提交前檢查清單
 
 - [ ] 已同步 `upstream/main`
-- [ ] 當前分支是 `submit/week-02`
+- [ ] 當前分支是 `submit/week-02-<student-id>`
 - [ ] 只改到 `weeks/week-02/solutions/<student-id>/`
 - [ ] PR 標題符合格式
 - [ ] PR 描述已填完整
