@@ -10,6 +10,10 @@
 
 ```
 .
+├── .github/
+│   └── workflows/
+│       └── submission-policy-check.yml
+├── assets/                         # 資料整理與腳本
 ├── docs/
 │   ├── COURSE_PLAN.md              # 課程計劃表
 │   ├── SUBMISSION_GUIDE.md         # 學生作業提交指南
@@ -28,7 +32,6 @@
 │   │   ├── QUESTION-*.md
 │   │   └── solutions/
 ├── CHECK_LIST.md                   # 題目文件品質檢查表
-├── .gitignore
 └── README.md (本檔案)
 ```
 

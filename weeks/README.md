@@ -13,18 +13,23 @@
 | 週別 | 主題 | 題數 | 狀態 |
 |---|---|---|---|
 | [Week 01](./week-01/README.md) | 課程說明 | - | - |
-| [Week 02](./week-02/README.md) | 資料結構基礎 | 5 | ✅ |
+| [Week 02](./week-02/README.md) | 資料結構基礎 | - | - |
 | [Week 03](./week-03/README.md) | 字串處理 | 5 | ⏳ |
 | [Week 04](./week-04/README.md) | 數字與日期 | 5 | ⏳ |
-| [Week 05](./week-05/README.md) | 自習週 | - | - |
-| [Week 06](./week-06/README.md) | 迭代器應用 | 5 | ⏳ |
+| [Week 05](./week-05/README.md) | 自習週 | 5 | ⏳ |
+| [Week 06](./week-06/README.md) | 迭代器應用 | - | - |
 | [Week 07](./week-07/README.md) | 檔案 I/O 基礎 | 5 | ⏳ |
-| [Week 08](./week-08/README.md) | 考前複習 | - | - |
-| [Week 09](./week-09/README.md) | 資料編碼 | 5 | ⏳ |
+| [Week 08](./week-08/README.md) | 考前複習 | 5 | ⏳ |
+| [Week 09](./week-09/README.md) | 資料編碼 | - | - |
 | [Week 10](./week-10/README.md) | 函式進階 | 5 | ⏳ |
 | [Week 11](./week-11/README.md) | 類別與模組 | 5 | ⏳ |
 | [Week 12](./week-12/README.md) | 網路與共時 | 5 | ⏳ |
-| [Week 13](./week-13/README.md) | 綜合專案 | 4 | ⏳ |
+| [Week 13](./week-13/README.md) | 綜合專案 | 5 | ⏳ |
+| [Week 14](./week-14/README.md) | 綜合練習 | 4 | ⏳ |
+| [Week 15](./week-15/README.md) | 綜合練習 | - | - |
+| [Week 16](./week-16/README.md) | 綜合練習 | - | - |
+| [Week 17](./week-17/README.md) | 綜合練習 | - | - |
+| [Week 18](./week-18/README.md) | 期末考 | - | - |
 
 ---
 
@@ -32,9 +37,8 @@
 
 **CPE 級別 1 共 49 道必考題**
 
-- 已完成：5 題（Week 02）
-- 進行中：44 題（Week 03-13）
-- 自習/考試週：Week 05、Week 08
+- 目前有題目：49 題（Week 03、04、05、07、08、10、11、12、13、14）
+- 目前無題目：Week 01、02、06、09、15、16、17、18
 
 ### 快速連結
 
@@ -52,6 +56,9 @@ weeks/
 │   └── README.md
 ├── week-02/
 │   ├── README.md
+│   └── bloom-examples/
+├── week-03/
+│   ├── README.md
 │   ├── QUESTION-100.md
 │   ├── QUESTION-118.md
 │   ├── QUESTION-272.md
@@ -59,17 +66,8 @@ weeks/
 │   ├── QUESTION-490.md
 │   └── solutions/
 │       └── README.md
-├── week-03/
-│   ├── README.md
-│   ├── QUESTION-948.md
-│   ├── QUESTION-10008.md
-│   ├── QUESTION-10019.md
-│   ├── QUESTION-10035.md
-│   ├── QUESTION-10038.md
-│   └── solutions/
-│       └── README.md
 ├── ...
-└── week-13/
+└── week-14/
     ├── README.md
     ├── QUESTION-11349.md
     ├── QUESTION-11417.md
