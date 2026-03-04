@@ -2,7 +2,7 @@
 
 - 主題：資料結構基礎（序列與字典技巧，排序與計數）
 - 解題：本週無 `QUESTION-*.md`（題目已順延至 Week 03）
-- 作業：完成排序與序列處理作業（[HOMEWORK.md](./HOMEWORK.md)）
+- 作業：完成繁中作業單（排序與序列處理，見 [HOMEWORK.md](./HOMEWORK.md)）
 - 本週 GitHub 操作流程：[GITHUB_WORKFLOW.md](./GITHUB_WORKFLOW.md)
 
 ---
@@ -13,6 +13,36 @@
 - 練習建立 `submit/week-02` 分支
 - 練習在 `weeks/week-02/solutions/<student-id>/` 內提交檔案
 - 練習建立 PR 並使用規定格式標題
+
+---
+
+## 本週回家作業（繁體中文）
+
+詳細規格請見：[HOMEWORK.md](./HOMEWORK.md)
+
+### 作業題目
+
+1. **序列清理（Sequence Clean）**：去重（保留順序）、排序、偶數篩選
+2. **學生成績排序（Student Ranking）**：多條件排序（分數、年齡、姓名）
+3. **紀錄彙整（Log Summary）**：統計使用者事件次數與最常見動作
+
+### 開發方式（Test-Oriented Development）
+
+- 每題至少完成 1 次 `Red → Green → Refactor`
+- 測試骨架需由學生自行撰寫（`tests/test_task*.py`）
+- 需提交測試紀錄 `TEST_LOG.md`（至少 1 次失敗 + 1 次全通過）
+
+### 繳交內容
+
+- 程式檔：`task1_sequence_clean.py`、`task2_student_ranking.py`、`task3_log_summary.py`
+- 測試檔：`tests/test_task1.py`、`tests/test_task2.py`、`tests/test_task3.py`
+- 文件：`README.md`、`TEST_CASES.md`、`TEST_LOG.md`、`AI_USAGE.md`
+
+### 提交規範
+
+- 目錄：`weeks/week-02/solutions/<student-id>/`
+- 分支：`submit/week-02`
+- PR 標題：`Week 02 - <student-id> - <name>`
 ---
 
 ## 範例清單（Bloom 第 1 階 / 第 2 階）
