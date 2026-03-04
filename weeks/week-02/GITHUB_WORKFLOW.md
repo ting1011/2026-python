@@ -1,34 +1,58 @@
-# Week 02：下週會用到的 GitHub 觀念與操作指令
+# Week 02：Visual Studio Code GitHub 操作流程
 
-> 本課程採 **不使用 GitHub Classroom** 的進階流程：
+> 本課程採 **不使用 GitHub Classroom** 的流程：
 > `Template repo + upstream 同步 + 固定作業路徑 + 每週 branch + PR`
 
 ---
 
-## 1) 核心觀念（先理解）
+## A. 本週目標（Week 02）
 
-- `origin`：你自己的作業 repo（你 push 的地方）
-- `upstream`：老師的教材 repo（你同步教材的來源）
-- 每週作業用獨立分支（例如 `submit/week-03`）
-- 作業只放在：`weeks/week-XX/solutions/<student-id>/`
+1. 在 VS Code 完成教材同步
+2. 建立 `submit/week-02` 分支
+3. 只在 `weeks/week-02/solutions/<student-id>/` 放作業
+4. 由 VS Code 或 GitHub 建立 PR
 
 ---
 
-## 2) 第一次設定 upstream（只做一次）
+## B. 進入作業前（VS Code 設定）
+
+### 1) 開啟專案
+
+- VS Code → `File` → `Open Folder...`
+- 選擇你的課程 repo（學生自己的 repo）
+
+### 2) 安裝建議擴充套件
+
+- `GitHub Pull Requests and Issues`
+
+### 3) 確認 Git 狀態
+
+- 左側 `Source Control`（分支圖示）
+- 底部狀態列確認目前分支（建議先在 `main`）
+
+---
+
+## C. 第一次設定 upstream（只做一次）
+
+在 VS Code Terminal（`Terminal` → `New Terminal`）執行：
 
 ```bash
 git remote add upstream https://github.com/DevSecOpsLab-CSIE-NPU/2026-python.git
 git remote -v
 ```
 
-確認有兩個 remote：
+你應看到：
 
-- `origin`（你的 repo）
-- `upstream`（課程 repo）
+- `origin`：你的 repo
+- `upstream`：老師教材 repo
 
 ---
 
-## 3) 每次上課前同步教材
+## D. Week 02 實作流程（VS Code 版）
+
+### Step 1：同步教材到 `main`
+
+在 VS Code Terminal 執行：
 
 ```bash
 git fetch upstream
@@ -37,53 +61,93 @@ git merge upstream/main
 git push origin main
 ```
 
-> 規範：同步前先 commit 自己的改動，避免 merge 時把未完成變更混在一起。
+> 同步前若有未提交變更，先 commit 或 stash。
 
----
+### Step 2：建立本週分支
 
-## 4) 每週提交（branch + PR）
+方式一（GUI）：
 
-以 week-03 為例：
+- 點底部左下角分支名稱
+- `Create new branch...`
+- 輸入：`submit/week-02`
+
+方式二（Terminal）：
 
 ```bash
-git checkout -b submit/week-03
-# 在 weeks/week-03/solutions/<student-id>/ 撰寫解答
-git add .
-git commit -m "Submit week-03"
-git push origin submit/week-03
+git checkout -b submit/week-02
 ```
 
-到 GitHub 開 PR：
+### Step 3：建立本週作業目錄
+
+在 Explorer 建立資料夾：
+
+```text
+weeks/week-02/solutions/<student-id>/
+```
+
+建議最少兩個檔案：
+
+- `README.md`（完成題號、執行方式）
+- `practice.md`（練習紀錄）
+
+### Step 4：在 Source Control 提交
+
+1. 到 `Source Control` 檢查變更檔案
+2. 確認只有 `weeks/week-02/solutions/<student-id>/...`
+3. 在訊息欄輸入：`Submit week-02`
+4. 按 `Commit`
+5. 按 `Publish Branch` 或 `Push`
+
+若用 Terminal：
+
+```bash
+git add weeks/week-02/solutions/<student-id>/
+git commit -m "Submit week-02"
+git push -u origin submit/week-02
+```
+
+### Step 5：建立 PR
+
+方式一（VS Code 擴充）：
+
+- `Source Control` → `Create Pull Request`
+
+方式二（GitHub 網站）：
 
 - base：`main`
-- compare：`submit/week-03`
-- PR 標題：`Week 03 - <student-id> - <name>`
+- compare：`submit/week-02`
+
+PR 標題格式：
+
+```text
+Week 02 - <student-id> - <name>
+```
 
 範例：
 
 ```text
-Week 03 - 411234001 - 王小明
+Week 02 - 411234001 - 王小明
 ```
 
 ---
 
-## 5) 允許與禁止修改路徑
+## E. 路徑規範（一定要遵守）
 
-### ✅ 只允許提交
+### ✅ 允許提交
 
 ```text
-weeks/week-XX/solutions/<student-id>/
+weeks/week-02/solutions/<student-id>/
 ```
 
 ### ❌ 禁止修改
 
-- `weeks/week-XX/QUESTION-*.md`
-- `weeks/week-XX/README.md`
+- `weeks/week-02/QUESTION-*.md`
+- `weeks/week-02/README.md`
 - `docs/*`（除非老師公告允許）
 
 ---
 
-## 6) PR 描述建議模板
+## F. PR 描述模板
 
 ```markdown
 ## 完成題號
@@ -102,40 +166,21 @@ weeks/week-XX/solutions/<student-id>/
 
 ---
 
-## 7) 評分與改分機制（你需要知道）
+## G. 提交前檢查清單
 
-- 助教會在 PR Review 留分數與建議
-- 若後續修正而改分，會以「更新留言」保留紀錄
-- 正式成績以 LMS/成績表為準，PR 留言作為追溯依據
-
----
-
-## 8) 常用 Git 指令速查
-
-```bash
-# 看目前分支與狀態
-git branch
-git status
-
-# 看尚未提交的差異
-git diff
-
-# 看提交紀錄
-git log --oneline --decorate -n 10
-
-# 分支推上去並設定追蹤
-git push -u origin submit/week-03
-```
-
----
-
-## 9) 提交前檢查清單
-
-- [ ] 已先同步 `upstream/main`
-- [ ] 只改到 `solutions/<student-id>/`
-- [ ] 分支名稱是 `submit/week-XX`
+- [ ] 已同步 `upstream/main`
+- [ ] 當前分支是 `submit/week-02`
+- [ ] 只改到 `weeks/week-02/solutions/<student-id>/`
 - [ ] PR 標題符合格式
-- [ ] PR 描述包含題號、執行方式、依賴
+- [ ] PR 描述已填完整
+
+---
+
+## H. 評分與改分說明
+
+- 助教會在 PR Review 留評語與分數
+- 若後續修正，會用更新留言保留改分紀錄
+- 正式成績以 LMS/成績表為準
 
 ---
 
@@ -143,4 +188,4 @@ git push -u origin submit/week-03
 
 - 學生版完整指南：`docs/SUBMISSION_GUIDE.md`
 - 助教評分規範：`docs/TA_GRADING_GUIDE.md`
-- PR 規範檢查工作流：`.github/workflows/submission-policy-check.yml`
+- PR 規範檢查：`.github/workflows/submission-policy-check.yml`
