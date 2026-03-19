@@ -2,7 +2,7 @@
 # zoneinfo（Python 3.9+）取代 pytz
 
 from datetime import datetime, timedelta
-from zoneinfo import ZoneInfo
+from zoneinfo import ZoneInfo, available_timezones
 
 utc = ZoneInfo("UTC")
 central = ZoneInfo("America/Chicago")
@@ -25,7 +25,6 @@ utc_dt = datetime(2013, 3, 10, 7, 45, 0, tzinfo=utc)
 print(utc_dt.astimezone(central))  # 2013-03-10 01:45:00-06:00
 
 # 查詢國家時區
-from zoneinfo import available_timezones
 
 tw_zones = [z for z in available_timezones() if "Taipei" in z]
 print(tw_zones)  # ['Asia/Taipei']
