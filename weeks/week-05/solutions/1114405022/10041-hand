@@ -1,0 +1,19 @@
+import pytest
+from io import StringIO
+import sys
+
+def test_10041_easy(monkeypatch, capsys):
+    input_data = "2\n2 2 4\n3 2 4 6\n"
+    expected = "2\n4\n"
+    monkeypatch.setattr('sys.stdin', StringIO(input_data))
+    import QUESTION_10041_easy
+    out, _ = capsys.readouterr()
+    assert out == expected
+
+def test_10041(monkeypatch, capsys):
+    input_data = "2\n2 2 4\n3 2 4 6\n"
+    expected = "2\n4\n"
+    monkeypatch.setattr('sys.stdin', StringIO(input_data))
+    import QUESTION_10041
+    out, _ = capsys.readouterr()
+    assert out == expected
