@@ -1,0 +1,6 @@
+# UVA 10055 - 手打版
+import sys
+for line in sys.stdin:
+    if line.strip():
+        x, y = map(int, line.split())
+        print(abs(x-y))
