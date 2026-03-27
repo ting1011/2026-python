@@ -1,0 +1,18 @@
+n=int(input()
+for _ in range(n):
+    arr=list(map(int,input().split()))
+    r=arr[0]
+    nums=sorted(arr[1:])
+    if r%2==1:
+        median=nums[r//2]
+        count=nums.count(median)
+        print(median,count,1)
+    else:
+        m1=nums[r//2-1]
+        m2=nums[r//2]
+        ways=m2-m1+1
+        count=0
+        for x in nums:
+            if m1<=x<=m2:
+                count+=1
+        print(m1,count,ways)

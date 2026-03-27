@@ -1,4 +1,4 @@
-# 更簡單的測試程式（無需 pytest）
+i# 更簡單的測試程式（無需 pytest）
 def run_easy(inputs):
     lines = inputs.strip().split('\n')
     n = int(lines[0])
