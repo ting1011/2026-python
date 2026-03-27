@@ -1,4 +1,3 @@
-# UVA 10050 - 手打版
 n = int(input())
 for _ in range(n):
     d = int(input())
