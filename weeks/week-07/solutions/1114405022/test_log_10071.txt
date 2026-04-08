@@ -1,0 +1,14 @@
+# 測試紀錄
+
+## 標準解測試（test_QUESTION-10071.py）
+- 測試結果：全部通過
+- log 檔內容：無錯誤訊息，為空
+
+## 簡易版測試（test_QUESTION-10071-easy.py）
+- 測試結果：全部通過
+- log 檔內容：無錯誤訊息，為空
+
+---
+
+- 測試皆以 unittest 執行，所有測資皆正確無誤。
+- 若需詳細測資內容，請參考對應的 test_QUESTION-10071.py 及 test_QUESTION-10071-easy.py。
