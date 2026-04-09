@@ -1,0 +1,16 @@
+def find_group(S,D):
+    n = S
+    total = 0
+    while True:
+        total += n
+        if total >= D:
+            return n
+        n += 1
+
+if __name__ == "__main__":
+    import sys
+    for line in sys.stdin:
+        if not line.strip(): continue
+        S, D = map(int, line.strip().split())
+        print(find_group(S,D))
+        
