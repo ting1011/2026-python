@@ -1,0 +1,3 @@
+[submodule "2026-python/2026-python"]
+	path = 2026-python/2026-python
+	url = https://github.com/DevSecOpsLab-CSIE-NPU/2026-python
