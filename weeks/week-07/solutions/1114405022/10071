@@ -1,0 +1,25 @@
+from collections import Counter
+
+def count_six_tuples(S):
+    """
+    S: List[int]，集合 S
+    回傳: 滿足 a+b+c+d+e=f 的六元組數量
+    """
+    N = len(S)
+    sum_abc = Counter()
+    for a in S:
+        for b in S:
+            for c in S:
+                sum_abc[a+b+c] += 1
+    ans = 0
+    for d in S:
+        for e in S:
+            for f in S:
+                ans += sum_abc[d+e-f]
+    return ans
+
+if __name__ == "__main__":
+    # 讀取輸入
+    N = int(input())
+    S = [int(input()) for _ in range(N)]
+    print(count_six_tuples(S))
