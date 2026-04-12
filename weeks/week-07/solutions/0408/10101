@@ -1,0 +1,61 @@
+SEGMENTS = [0x7E,0x30,0x79,0x33,0x5B,0x70,0x7F,0x7B]
+
+MOVE_MAP = {}
+for i in range(10):
+    for j in range(10):
+        if i==j: continue
+        diff = SEGMENTS[i]^SEGMENTS[j]
+        if bin(diff).count('1')==2:
+            if bin(SEGMENTS[i]&diff).count('1')==1 and bin(SEGMENTS[j]&diff).count('1')==1:
+                MOVE_MAP.setdefault(i,set()).add(j)
+
+import re
+
+def parse_expr(expr):
+    tokens = re.findall(r'-?\d+|[+=-]', expr)
+    return tokens
+
+def eval_expr(tokens):
+    eq = tokens.index('=')
+    left = tokens[:eq]
+    right = tokens[eq+1:]
+    def calc(side):
+        s = 0
+        op = 1
+        for t in side:
+            if t=='+': op=1
+            elif t=='-': op=-1
+            else: s += op*int(t)
+        return s
+    return calc(left)==calc(right)
+
+def try_move(expr):
+    tokens = parse_expr(expr)
+    for idx, t in enumerate(tokens):
+        if not t.lstrip('-').isdigit(): continue
+        num = t.lstrip('-')
+        sign = '-' if t.startswith('-') else ''
+        for i, d in enumerate(num):
+            d0 = int(d)
+            for d1 in MOVE_MAP.get(d0, []):
+                if d1==d0: continue
+                new_num = num[:i]+str(d1)+num[i+1:]
+                new_token = sign+new_num
+                new_tokens = tokens[:idx]+[new_token]+tokens[idx+1:]
+                if eval_expr(new_tokens):
+                    out = ''
+                    j = 0
+                    for tok in tokens:
+                        if j==idx:
+                            out += new_token
+                        else:
+                            out += tok
+                        j += 1
+                    return out+'#'
+    return 'No'
+
+if __name__ == "__main__":
+    import sys
+    line = sys.stdin.readline().strip()
+    expr = line[:line.index('#')]
+    print(try_move(expr))
