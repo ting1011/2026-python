@@ -1,0 +1,29 @@
+def max_artillery(N,M,grid):
+    valid = []
+    for row in grid:
+        states = []
+        for mask in range(1<<M):
+            ok = True
+            for j in range(M):
+                if (mask>>j)&1:
+                    if row[j]=='H': ok=False
+                    if j>=1 and (mask>>(j-1))&1: ok=False
+                    if j>=2 and (mask>>(j-2))&1: ok=False
+            if ok:
+                states.append(mask)
+        valid.append(states)
+    from collections import defaultdict
+    dp = [defaultdict(int) for _ in range(N+1)]
+    dp[0][0]=0
+    for i in range(1,N+1):
+        for cur in valid[i-1]:
+            for pre in dp[i-1]:
+                if (cur&pre)==0 and (cur&(pre<<1))==0 and (cur&(pre>>1))==0:
+                    cnt = bin(cur).count('1')
+                    dp[i][cur] = max(dp[i][cur], dp[i-1][pre]+cnt)
+    return max(dp[N].values())
+
+if __name__ == "__main__":
+    N, M = map(int, input().split())
+    grid = [input().strip() for _ in range(N)]
+    print(max_artillery(N, M, grid))
