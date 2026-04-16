@@ -1,0 +1,42 @@
+F
+======================================================================
+FAIL: test_cases (__main__.TestLetterFrequency.test_cases)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\2026 python\2026-python\2026-python\weeks\week-04\solutions\0318\10008-test.py", line 19, in test_cases
+    self.assertEqual(ai.letter_frequency(lines), expected)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [('T', 6), ('S', 4), ('E', 3), ('I', 2), ('A', 1[6
+7 chars], 1)] != [('T', 4), ('E', 3), ('S', 3), ('I', 2), ('C', 1[57 chars], 1)]
+
+First differing element 0:
+('T', 6)
+('T', 4)
+
+First list contains 1 additional elements.
+First extra element 11:
+('U', 1)
+
+- [('T', 6),
+?        ^
+
++ [('T', 4),
+?        ^
+
+-  ('S', 4),
+   ('E', 3),
++  ('S', 3),
+   ('I', 2),
+-  ('A', 1),
+   ('C', 1),
+   ('H', 1),
+   ('L', 1),
+   ('N', 1),
+   ('O', 1),
+   ('R', 1),
+   ('U', 1)]
+
+----------------------------------------------------------------------
+Ran 1 test in 0.003s
+
+FAILED (failures=1)

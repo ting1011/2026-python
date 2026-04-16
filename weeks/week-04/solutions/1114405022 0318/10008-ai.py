@@ -1,0 +1,19 @@
+# UVA 10008: What's Cryptanalysis?
+# 中文註解版
+
+def letter_frequency(lines):
+    freq = {}
+    for line in lines:
+        for c in line:
+            if c.isalpha():
+                c = c.upper()
+                freq[c] = freq.get(c, 0) + 1
+    # 依照出現次數（多到少），再依字母排序
+    result = sorted(freq.items(), key=lambda x: (-x[1], x[0]))
+    return result
+
+if __name__ == "__main__":
+    n = int(input())
+    lines = [input() for _ in range(n)]
+    for c, cnt in letter_frequency(lines):
+        print(f"{c} {cnt}")
