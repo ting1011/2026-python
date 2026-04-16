@@ -1,0 +1,30 @@
+# UVA 10035: Primary Arithmetic
+# 中文註解版（手打）
+
+def carry_count(a, b):
+    a = str(a)[::-1]
+    b = str(b)[::-1]
+    carry = 0
+    cnt = 0
+    for i in range(max(len(a), len(b))):
+        d1 = int(a[i]) if i < len(a) else 0
+        d2 = int(b[i]) if i < len(b) else 0
+        if d1 + d2 + carry >= 10:
+            carry = 1
+            cnt += 1
+        else:
+            carry = 0
+    return cnt
+
+if __name__ == "__main__":
+    while True:
+        a, b = map(int, input().split())
+        if a == 0 and b == 0:
+            break
+        cnt = carry_count(a, b)
+        if cnt == 0:
+            print("No carry operation.")
+        elif cnt == 1:
+            print("1 carry operation.")
+        else:
+            print(f"{cnt} carry operations.")
