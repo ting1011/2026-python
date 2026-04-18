@@ -1,36 +1,34 @@
-﻿"""UVA 10035 - Primary Arithmetic（手打版本）"""
+﻿"""UVA 10035 - Easy 版"""
 
 
-def carry_count(a: int, b: int) -> int:
-    """用模擬直式加法的方式計算進位次數。"""
+def carry_count_easy(a: int, b: int) -> int:
     a = str(a)[::-1]
     b = str(b)[::-1]
     carry = 0
-    cnt = 0
+    times = 0
     for i in range(max(len(a), len(b))):
         da = int(a[i]) if i < len(a) else 0
         db = int(b[i]) if i < len(b) else 0
         if da + db + carry >= 10:
             carry = 1
-            cnt += 1
+            times += 1
         else:
             carry = 0
-    return cnt
+    return times
 
 
 def solve() -> None:
-    """讀到 0 0 結束，其他每行輸出進位描述。"""
     while True:
         a, b = map(int, input().split())
         if a == 0 and b == 0:
             break
-        cnt = carry_count(a, b)
-        if cnt == 0:
+        c = carry_count_easy(a, b)
+        if c == 0:
             print("No carry operation.")
-        elif cnt == 1:
+        elif c == 1:
             print("1 carry operation.")
         else:
-            print(f"{cnt} carry operations.")
+            print(f"{c} carry operations.")
 
 
 if __name__ == "__main__":

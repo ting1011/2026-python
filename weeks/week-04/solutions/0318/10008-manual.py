@@ -1,18 +1,24 @@
-# UVA 10008: What's Cryptanalysis?
-# 中文註解版（手打）
+﻿"""UVA 10008 - What's Cryptanalysis?（手打版本）"""
 
-def letter_frequency(lines):
-    freq = {}
+
+def letter_frequency(lines: list[str]) -> list[tuple[str, int]]:
+    """逐字元掃描並統計字母次數。"""
+    freq: dict[str, int] = {}
     for line in lines:
-        for c in line:
-            if c.isalpha():
-                c = c.upper()
-                freq[c] = freq.get(c, 0) + 1
-    result = sorted(freq.items(), key=lambda x: (-x[1], x[0]))
-    return result
+        for ch in line:
+            if ch.isalpha():
+                ch = ch.upper()
+                freq[ch] = freq.get(ch, 0) + 1
+    return sorted(freq.items(), key=lambda item: (-item[1], item[0]))
+
+
+def solve() -> None:
+    """依題目格式讀入 n 行字串並輸出統計結果。"""
+    n = int(input().strip())
+    lines = [input() for _ in range(n)]
+    for ch, count in letter_frequency(lines):
+        print(f"{ch} {count}")
+
 
 if __name__ == "__main__":
-    n = int(input())
-    lines = [input() for _ in range(n)]
-    for c, cnt in letter_frequency(lines):
-        print(f"{c} {cnt}")
+    solve()

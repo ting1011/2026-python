@@ -1,19 +1,5 @@
-F
-======================================================================
-FAIL: test_cases (__main__.TestFibonaccimalBase.test_cases)
+.
 ----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "C:\Users\user\Desktop\2026 python\weeks\week-04\solutions\0318 1114405022\948-test.py", line 28, in test_cases
-    self.assertEqual(ai.fibonaccimal_base(n), expected)
-    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AssertionError: '1000010100' != '100010010'
-- 1000010100
-?  -       -
-+ 100010010
-?       +
+Ran 1 test in 0.001s
 
-
-----------------------------------------------------------------------
-Ran 1 test in 0.003s
-
-FAILED (failures=1)
+OK

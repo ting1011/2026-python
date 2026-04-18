@@ -1,8 +1,7 @@
-﻿"""UVA 10038 - Jolly Jumpers（手打版本）"""
+﻿"""UVA 10038 - Easy 版"""
 
 
-def is_jolly(nums: list[int]) -> bool:
-    """手動實作 Jolly 判斷。"""
+def is_jolly_easy(nums: list[int]) -> bool:
     n = len(nums)
     if n <= 1:
         return True
@@ -13,7 +12,6 @@ def is_jolly(nums: list[int]) -> bool:
 
 
 def solve() -> None:
-    """逐行讀入測資並輸出 Jolly/Not jolly。"""
     while True:
         try:
             parts = input().split()
@@ -22,7 +20,7 @@ def solve() -> None:
         if not parts:
             continue
         nums = list(map(int, parts[1:]))
-        print("Jolly" if is_jolly(nums) else "Not jolly")
+        print("Jolly" if is_jolly_easy(nums) else "Not jolly")
 
 
 if __name__ == "__main__":
