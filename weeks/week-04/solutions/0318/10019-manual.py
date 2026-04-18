@@ -1,0 +1,14 @@
+# UVA 10019: Funny Encryption Method
+# 中文註解版（手打）
+
+def count_ones(n):
+    b1 = bin(n).count('1')
+    b2 = sum(bin(int(d)).count('1') for d in str(n))
+    return b1, b2
+
+if __name__ == "__main__":
+    T = int(input())
+    for _ in range(T):
+        n = int(input())
+        b1, b2 = count_ones(n)
+        print(f"{b1} {b2}")
