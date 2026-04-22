@@ -1,0 +1,10 @@
+﻿=== 測試 QUESTION-10235.py ===
+[case1] PASS
+
+=== 測試 QUESTION-10235-easy.py ===
+[case1] PASS
+
+=== 測試 QUESTION-10235-easy-handtyped.py ===
+[case1] PASS
+
+全部測試通過
