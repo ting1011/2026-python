@@ -1,0 +1,16 @@
+﻿=== 測試 QUESTION-10226.py ===
+[case1] PASS
+[case2] PASS
+[case3] PASS
+
+=== 測試 QUESTION-10226-easy.py ===
+[case1] PASS
+[case2] PASS
+[case3] PASS
+
+=== 測試 QUESTION-10226-easy-handtyped.py ===
+[case1] PASS
+[case2] PASS
+[case3] PASS
+
+全部測試通過
