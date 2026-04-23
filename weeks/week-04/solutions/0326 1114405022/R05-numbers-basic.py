@@ -1,19 +1,12 @@
 # R05. 數字基礎：四捨五入、進制、格式化（3.1–3.4）
 # round / Decimal / format / bin / oct / hex
-# 目標：建立常見數值操作的直覺，理解「看起來像錯誤」的浮點誤差其實是機制
 
 from decimal import Decimal, localcontext
 import math
 
 # ── 3.1 四捨五入 ──────────────────────────────────────
-# round(x, ndigits)：
-# - ndigits > 0：保留小數位
-# - ndigits = 0 或省略：取整數
-# - ndigits < 0：對十位/百位/千位做四捨五入
 print(round(1.27, 1))  # 1.3
 print(round(1.25361, 3))  # 1.254
-# Python 的 round 採「銀行家捨入」（round half to even）
-# 所以 0.5 -> 0，2.5 -> 2，目的是降低大量統計時的偏差
 print(round(0.5))  # 0（銀行家捨入，取最近偶數）
 print(round(2.5))  # 2
 
@@ -21,29 +14,19 @@ a = 1627731
 print(round(a, -2))  # 1627700（對百位四捨五入）
 
 # ── 3.2 精確浮點數 ────────────────────────────────────
-# 浮點數使用二進位近似表示，某些十進位小數無法精準表達
 print(4.2 + 2.1)  # 6.300000000000001（有誤差）
-
-# Decimal 用字串建立可避免一開始就帶入二進位誤差
 da, db = Decimal("4.2"), Decimal("2.1")
 print(da + db)  # 6.3（精確）
 
-# localcontext 可暫時改變 Decimal 運算設定（例如有效位數）
 with localcontext() as ctx:
     ctx.prec = 3
     print(Decimal("1.3") / Decimal("1.7"))  # 0.765
 
 # math.fsum 修正大數+小數精度
-# 一般 sum 可能因累加順序造成誤差；fsum 使用更穩定演算法
 print(math.fsum([1.23e18, 1, -1.23e18]))  # 1.0（正確）
 
 # ── 3.3 數字格式化 ────────────────────────────────────
 x = 1234.56789
-# format 規格重點：
-# - 0.2f  : 小數固定 2 位
-# - >10.1f: 右對齊寬度 10，小數 1 位
-# - ,     : 千分位逗號
-# - e     : 科學記號
 print(format(x, "0.2f"))  # '1234.57'
 print(format(x, ">10.1f"))  # '    1234.6'
 print(format(x, ","))  # '1,234.56789'
@@ -52,11 +35,6 @@ print(format(x, "e"))  # '1.234568e+03'
 
 # ── 3.4 二八十六進制 ──────────────────────────────────
 n = 1234
-# bin/oct/hex 會帶前綴：0b / 0o / 0x
 print(bin(n), oct(n), hex(n))  # 0b10011010010 0o2322 0x4d2
-
-# format 可輸出不含前綴的結果，便於自訂輸出格式
 print(format(n, "b"), format(n, "x"))  # 10011010010 4d2
-
-# int(text, base) 可將不同進制字串轉回十進位整數
 print(int("4d2", 16), int("2322", 8))  # 1234 1234

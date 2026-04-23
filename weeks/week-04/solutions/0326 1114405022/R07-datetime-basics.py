@@ -1,29 +1,22 @@
 # R07. 日期時間基本運算（3.12–3.13）
 # timedelta 加減 / weekday() 計算指定星期
-# 目標：熟悉 datetime 與 timedelta 的加減規則，並可計算「上一個某星期幾」
 
 from datetime import datetime, timedelta
 
 # ── 3.12 timedelta 基本運算 ───────────────────────────
-# timedelta 代表兩個時間點之間的「時間差」
 a = timedelta(days=2, hours=6)
 b = timedelta(hours=4.5)
 c = a + b
-
-# days 僅顯示整天部分；若要完整秒數請用 total_seconds()
 print(c.days)  # 2
 print(c.total_seconds() / 3600)  # 58.5
 
 dt = datetime(2012, 9, 23)
-# datetime 可直接加 timedelta 得到新日期時間
 print(dt + timedelta(days=10))  # 2012-10-03 00:00:00
 
 d1, d2 = datetime(2012, 9, 23), datetime(2012, 12, 21)
-# 兩個 datetime 相減會得到 timedelta
 print((d2 - d1).days)  # 89
 
 # 閏年自動處理
-# 2012 是閏年（2 月有 29 天），2013 是平年
 print((datetime(2012, 3, 1) - datetime(2012, 2, 28)).days)  # 2（閏年）
 print((datetime(2013, 3, 1) - datetime(2013, 2, 28)).days)  # 1（平年）
 
@@ -40,19 +33,10 @@ WEEKDAYS = [
 
 
 def get_previous_byday(dayname: str, start: datetime | None = None) -> datetime:
-    # 若未指定起始日期，預設用「現在」
     if start is None:
         start = datetime.today()
-
-    # weekday(): Monday=0 ... Sunday=6
     day_num = start.weekday()
-
-    # 找出目標星期索引
     target = WEEKDAYS.index(dayname)
-
-    # 計算往前退幾天：
-    # (7 + day_num - target) % 7 得到 0~6
-    # 若剛好是同一天（0），用 or 7 強制回到「上一週同星期」
     days_ago = (7 + day_num - target) % 7 or 7
     return start - timedelta(days=days_ago)
 

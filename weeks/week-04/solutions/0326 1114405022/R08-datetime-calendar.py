@@ -1,6 +1,5 @@
 # R08. 日期範圍與字串轉換（3.14–3.15）
 # calendar.monthrange / strptime / strftime
-# 目標：取得月份邊界、產生日期序列，並完成字串與 datetime 的互轉
 
 from datetime import datetime, date, timedelta
 from calendar import monthrange
@@ -8,15 +7,9 @@ from calendar import monthrange
 
 # ── 3.14 當月日期範圍 ─────────────────────────────────
 def get_month_range(start: date | None = None) -> tuple[date, date]:
-    # 若沒有傳入日期，預設使用「本月 1 號」
     if start is None:
         start = date.today().replace(day=1)
-
-    # monthrange(year, month) -> (該月第一天是星期幾, 該月天數)
     _, days = monthrange(start.year, start.month)
-
-    # 回傳 [月初, 下月月初)
-    # 用半開區間可讓迭代判斷更一致（start <= x < stop）
     return start, start + timedelta(days=days)
 
 
@@ -26,7 +19,6 @@ print(first, "~", last - timedelta(days=1))  # 2012-08-01 ~ 2012-08-31
 
 # 通用日期迭代生成器
 def date_range(start: datetime, stop: datetime, step: timedelta):
-    # 半開區間：包含 start，不包含 stop
     while start < stop:
         yield start
         start += step
@@ -38,20 +30,13 @@ for d in date_range(datetime(2012, 9, 1), datetime(2012, 9, 2), timedelta(hours=
 
 # ── 3.15 字串轉換為日期 ───────────────────────────────
 text = "2012-09-20"
-
-# strptime: 依格式字串把文字解析為 datetime
-# %Y=四位年, %m=兩位月, %d=兩位日
 dt = datetime.strptime(text, "%Y-%m-%d")
 print(dt)  # 2012-09-20 00:00:00
-
-# strftime: 把 datetime 轉成指定格式字串
 print(datetime.strftime(dt, "%A %B %d, %Y"))  # 'Thursday September 20, 2012'
 
 
 # 手動解析（比 strptime 快 7 倍）
 def parse_ymd(s: str) -> datetime:
-    # 固定格式下，手動 split/轉 int 通常更快
-    # 但通用性較低，格式一變就要改程式
     y, m, d = s.split("-")
     return datetime(int(y), int(m), int(d))
 
