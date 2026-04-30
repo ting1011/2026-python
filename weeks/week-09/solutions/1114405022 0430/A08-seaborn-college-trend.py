@@ -109,7 +109,7 @@ sns.lineplot(data=pivot, x="學年", y="人數", hue="學院",
              marker="o", markersize=10, linewidth=2.5, ax=axes[0])
 axes[0].set_title("109–114 各學院新生人數趨勢", fontsize=16, pad=12)
 axes[0].set_xticks(sorted(pivot["學年"].unique()))
-axes[0].legend(title="學院", loc="upper right", frameon=True)
+axes[0].legend(title="學院", loc="upper right", frameon=True, fontsize=8, title_fontsize=9)
 
 # 在每個點上標註人數
 for _, r in pivot.iterrows():
@@ -125,7 +125,7 @@ pivot_wide.plot(kind="bar", stacked=True,
 axes[1].set_title("各學年學院結構（堆疊）", fontsize=16, pad=12)
 axes[1].set_ylabel("人數")
 axes[1].tick_params(axis="x", rotation=0)
-axes[1].legend(title="學院", loc="upper right", fontsize=9)
+axes[1].legend(title="學院", loc="upper right", fontsize=8, title_fontsize=9)
 
 fig.suptitle("國立澎湖科技大學  109–114 學年新生生源分析",
              fontsize=18, fontweight="bold", y=1.02)
