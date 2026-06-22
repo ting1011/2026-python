@@ -15,6 +15,7 @@
   4. 寫 timing.py,全綠後 commit: "feat: stage1 實作 timeit 裝飾器"
 """
 
+import unittest
 from timing import timeit
 
 
